@@ -17,6 +17,7 @@ The script works on Python 2.x. No other dependencies are required.
 The script accesses privileged files and needs to be run with root privileges:
 
 ```shell
+> $ sudo python libc_analyzor.py
 [*] listing PID ...
 [*] retrieving libc addresses ...
 [+] PID     : Physical            Virtual          (Name)
