@@ -9,7 +9,7 @@ import struct
 import hashlib
 
 PROC_PATH = '/proc'
-LIBC_PATH_PREFIX = 'libc-2.19.so'
+LIBC_PATH_PREFIX = 'libc-2.'
 PROC_MAPS_PATH = '/proc/{}/maps'
 PROC_COMM_PATH = '/proc/{}/comm'
 PROC_PAGEMAP_PATH = '/proc/{}/pagemap'
@@ -17,11 +17,11 @@ PROC_MEM_PATH = '/proc/{}/mem'
 
 
 def info(text):
-    print "[*] {} ...".format(text)
+    print("[*] {} ...".format(text))
 
 
 def success(text):
-    print "[+] {}".format(text)
+    print("[+] {}".format(text))
 
 
 def md5sum(blob):
