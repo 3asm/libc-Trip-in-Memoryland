@@ -97,8 +97,10 @@ if __name__ == '__main__':
 
     info('dump {} libc files'.format(len(unique_libc_addrs)))
     for physical, (offset, size, pid) in unique_libc_addrs.items():
-        info('dumping libc at physical address {:#016x}'.format(physical))
-        chunk = dump_memory(pid, offset, size, '/tmp/libc_{}'.format(pid))
+
+        output_path = '/tmp/libc_{}'.format(pid)
+        info("dumping libc at physical address {:#016x} to '{}'".format(physical, output_path))
+        chunk = dump_memory(pid, offset, size, output_path)
         success("md5sum: {}".format(md5sum(chunk)))
 
 
