@@ -46,7 +46,7 @@ def parse_proc_maps(pid):
                 yield m.groups()
 
 
-def vertical_to_physical(memory_adress, pid):
+def virtual_to_physical(memory_adress, pid):
     maps_path = PROC_PAGEMAP_PATH.format(pid)
     page_size = os.sysconf("SC_PAGE_SIZE")
     pagemap_entry_size = 8
@@ -85,7 +85,7 @@ if __name__ == '__main__':
             if LIBC_PATH_PREFIX in entry[6]:
                 offset = int(entry[0], 16)
                 size = int(entry[1], 16) - offset
-                physical_offset = vertical_to_physical(offset, pid)
+                physical_offset = virtual_to_physical(offset, pid)
                 unique_libc_addrs[physical_offset] = (offset, size, pid)
                 libc_mappings[pid] = (physical_offset, offset, size)
                 #  take first entry only corresponding to .text code section
